@@ -45,12 +45,14 @@ public class CheckMain extends PluginBase implements Listener {
         Player player = event.getPlayer();
         if (player != null) {
             String name = player.getName();
-            if (!name.trim().equals(name)) {
+            if (noSpace && !name.trim().equals(name)) {
                 player.kick(language.getTranslation("kick_no_space"));
             }
-            for (String bannedChar : bannedChars) {
-                if (name.contains(bannedChar)) {
-                    player.kick(language.getTranslation("kick_banned_chars", bannedChar), true);
+            if (bannedChars.size() > 0) {
+                for (String bannedChar : bannedChars) {
+                    if (name.contains(bannedChar)) {
+                        player.kick(language.getTranslation("kick_banned_chars", bannedChar), true);
+                    }
                 }
             }
         }

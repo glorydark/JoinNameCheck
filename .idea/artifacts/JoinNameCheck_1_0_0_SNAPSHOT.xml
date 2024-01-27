@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="JoinNameCheck-1.0.0-SNAPSHOT">
+    <output-path>$PROJECT_DIR$/../../dependencies/test_server/plugins</output-path>
+    <root id="archive" name="JoinNameCheck-1.0.0-SNAPSHOT.jar">
+      <element id="module-output" name="JoinNameCheck" />
+    </root>
+  </artifact>
+</component>

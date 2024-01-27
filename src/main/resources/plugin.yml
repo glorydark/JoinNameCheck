@@ -1,0 +1,7 @@
+name: JoinNameCheck
+main: glorydark.nukkit.joinnamecheck.CheckMain
+version: "1.0.0"
+api: "1.0.0"
+author: glorydark
+description: JoinNameCheck
+load: POSTWORLD

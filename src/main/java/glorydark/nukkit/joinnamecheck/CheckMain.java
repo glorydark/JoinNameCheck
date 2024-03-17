@@ -5,6 +5,7 @@ import cn.nukkit.event.EventHandler;
 import cn.nukkit.event.Listener;
 import cn.nukkit.event.player.PlayerJoinEvent;
 import cn.nukkit.event.player.PlayerKickEvent;
+import cn.nukkit.event.player.PlayerLocallyInitializedEvent;
 import cn.nukkit.plugin.PluginBase;
 import cn.nukkit.utils.Config;
 
@@ -43,16 +44,14 @@ public class CheckMain extends PluginBase implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        if (player != null) {
-            String name = player.getName();
-            if (noSpace && !name.trim().equals(name)) {
-                player.kick(language.getTranslation("kick_no_space"));
-            }
-            if (bannedChars.size() > 0) {
-                for (String bannedChar : bannedChars) {
-                    if (name.contains(bannedChar)) {
-                        player.kick(language.getTranslation("kick_banned_chars", bannedChar), true);
-                    }
+        String name = player.getName();
+        if (noSpace && !name.replace(" ", "").equals(name)) {
+            player.kick(language.getTranslation("kick_no_space"));
+        }
+        if (bannedChars.size() > 0) {
+            for (String bannedChar : bannedChars) {
+                if (name.contains(bannedChar)) {
+                    player.kick(language.getTranslation("kick_banned_chars", bannedChar), true);
                 }
             }
         }
